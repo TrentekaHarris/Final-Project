@@ -51,6 +51,7 @@ function hasValue(input) {
   } 
 
   
+
 }
 
 ;
@@ -62,7 +63,6 @@ document.getElementById("newTaskForm").addEventListener("submit", function (even
   //Handle invalid data & prevent default
   event.preventDefault();
 
-  
   
   //form validation is successful
   let nameValid = hasValue(data.elements['newTaskNameInput']);
