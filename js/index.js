@@ -65,6 +65,7 @@ tasksList.addEventListener('click', (event) => {
        const taskId = Number(parentTask.dataset.taskId);
         const task = taskNew.getTaskById(tasksList);
           taskNew.status = 'DONE';
+          console.log()
             taskNew.save();
             taskNew.render();
     }

@@ -12,7 +12,7 @@ const createTaskHtml = (name, description, assignedTo, dueDate, status, id) =>
   </div>`
 //Task Manager Class
 class TaskManager {
-    constructor(task = [], currentId) {
+    constructor(task = [], currentId = 0) {
         this._tasks = task;
         this._currentId = currentId;
     }
@@ -46,19 +46,20 @@ class TaskManager {
             const task = this.tasks[i];
             const date = new Date('October 30, 2022');
             const formattedDate = 'October 30, 2022';
-            const taskHtml = createTaskHtml('Finish Organizing Garage', 'Decorations are overtaking the garage. It needs to be organized before the start of the holiday season.', 'Task Assignee: Thomas', 'Due Date: October 31, 2022', 'incomplete');
+            const tasksHtml = createTaskHtml('Finish Organizing Garage', 'Decorations are overtaking the garage. It needs to be organized before the start of the holiday season.', 'Task Assignee: Thomas', 'Due Date: October 31, 2022', 'incomplete');
             tasksHtmlList.push(taskHtml)
         }
+        const tasksHtml = tasksHtmlList.join('\n');
         const taskList = document.querySelector("#tasksList");
-        taskList.innerHTML = taskHtml;
+        taskList.innerHTML = tasksHtml;
     }
 
 //getTaskById to the TaskManager class
-getTaskById(taskID) {
+getTaskById(taskId) {
     let foundTask = "";
     for (let i = 0; i < this.tasks.length; i++) {
         let task = this.tasks[i];
-        if (task.id === taskID) {
+        if (task.id === taskId) {
             let foundTask = task;
         }
     }
@@ -70,7 +71,7 @@ getTaskById(taskID) {
 save() {
     const tasksJson = JSON.stringify(this.tasks);
     localStorage.setItem('tasks', tasksJson);
-    const currentId = this.currentId.toString();
+    const currentId = this.currentId;
     localStorage.setItem('currentId', currentId);
 }
 load() {
